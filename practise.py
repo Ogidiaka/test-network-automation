@@ -1,16 +1,6 @@
-import json
-
-x = {
-    "name": "John",
-    "age":30,
-    "married": True,
-    "divorced": False,
-    "children": ("Ann", "Billy"),
-    "pets": None,
-    "cars": [
-        {"model": "BMW 230", "mpg": 27.5},
-        {"model": "Ford Edge", "mpg": 24.1}
-        ]
-    }
-
-print(json.dumps(x, indent=4))
+#Here’s an example of a simple script to log in to a router (an example IP is 192.168.255.249 with a username and password of cisco)
+from netmiko import ConnectHandler
+device = ConnectHandler(device_type=’cisco_ios’, ip=’192.168.255.249′, username=’cisco’, password=’cisco’)
+output = device.send_command(“show version”)
+print (output)
+device.disconnect()
